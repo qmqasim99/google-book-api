@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 const Greeting = styled.p`
@@ -8,6 +9,7 @@ const Greeting = styled.p`
 `;
 
 const Search = ({ setSearchTerm }) => {
+  const navigate = useNavigate;
   const [newSearch, setNewSearch] = useState();
 
   const handleChange = (event) => {
@@ -20,12 +22,16 @@ const Search = ({ setSearchTerm }) => {
     event.preventDefault();
     setSearchTerm(newSearch);
     setNewSearch("");
+    navigate("/");
   };
 
   return (
     <section>
+      {/*       
       <Greeting primary={true}>hellp from styled</Greeting>
       <Greeting>hellpppp from styled</Greeting>
+
+       */}
       <form action="" onSubmit={handleSubmit}>
         <input type="text" onChange={handleChange} value={newSearch} />
         <button>Search</button>
